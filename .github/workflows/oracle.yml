@@ -1,0 +1,36 @@
+name: Sacred Oracle Heartbeat
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Runs every 30 minutes
+  workflow_dispatch: # Allows manual button click
+
+permissions:
+  contents: write
+
+jobs:
+  Generate-Signal:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install Ethers
+      run: npm install ethers
+
+    - name: Run Sacred Simulation
+      run: node Simulate.js
+
+    - name: Commit Signal Log
+      run: |
+        git config --global user.name "Oracle-Bot"
+        git config --global user.email "bot@phoenix.omega"
+        git add performance_log.json
+        git commit -m "🔮 New Sacred Signal Detected [skip ci]" || echo "No signal change"
+        git push
