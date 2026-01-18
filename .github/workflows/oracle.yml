@@ -1,36 +1,54 @@
-name: Sacred Oracle Heartbeat
+name: Phoenix Commander (Brain)
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # Runs every 30 minutes
-  workflow_dispatch: # Allows manual button click
-
-permissions:
-  contents: write
+    - cron: '*/30 * * * *' # Scans market every 30 mins
+  workflow_dispatch:
 
 jobs:
-  Generate-Signal:
+  Analyze-and-Command:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Brain
+        uses: actions/checkout@v4
 
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Install Ethers
-      run: npm install ethers
+      - name: Install Dependencies
+        run: npm install ethers
 
-    - name: Run Sacred Simulation
-      run: node Simulate.js
+      - name: Run Sacred Simulation
+        run: node Simulate.js
 
-    - name: Commit Signal Log
-      run: |
-        git config --global user.name "Oracle-Bot"
-        git config --global user.email "bot@phoenix.omega"
-        git add performance_log.json
-        git commit -m "🔮 New Sacred Signal Detected [skip ci]" || echo "No signal change"
-        git push
+      - name: Check for Golden Ratio Signal
+        id: check_signal
+        run: |
+          # If the log says "BUY_SIGNAL", we trigger the trade
+          if grep -q "BUY_SIGNAL" performance_log.json; then
+            echo ">> SIGNAL DETECTED. WAKING SLEEPER CELL..."
+            echo "trigger=true" >> $GITHUB_OUTPUT
+          else
+            echo ">> MARKET NOISE DETECTED. STAYING DORMANT."
+            echo "trigger=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: ⚡ FIRE NEURAL BRIDGE (Wake Calabasas)
+        if: steps.check_signal.outputs.trigger == 'true'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GOD_MODE_KEY }}
+          repository: mkpollard101/CalabasasPhoenixAscendecy
+          event-type: execute_trade_protocol
+          client-payload: '{"strategy": "golden_ratio", "chain": "base"}'
+          
+      - name: Commit Log
+        run: |
+          git config --global user.name "Oracle-Bot"
+          git config --global user.email "bot@phoenix.omega"
+          git add performance_log.json
+          git commit -m "🔮 Signal Logged [skip ci]" || echo "No changes"
+          git push
+
