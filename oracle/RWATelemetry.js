@@ -1,20 +1,25 @@
-// oracle/RWATelemetry.js
-// SUBJECT: Real-World Asset (RWA) Telemetry
+// oracle/MarketTelemetry.js
+// SUBJECT: High-Frequency Data Stream for Members
 // PROTOCOL: FLOWER OF LIFE DATA SCHEMA
 
-export class RWATelemetry {
+export class MarketTelemetry {
     constructor() {
         this.geometry = "FLOWER_OF_LIFE";
-        this.feeds = ["ENERGY_GRID_NC", "BANDWIDTH_UPTIME", "SECURITY_PERIMETER"];
+        // CHANGED: From Physical Sensors to Digital Feeds
+        this.feeds = ["BTC_VOLATILITY", "WHALE_WALLET_WATCH", "AI_SENTIMENT"];
     }
 
-    async scanAssetZero() {
-        console.log("[ORACLE] Scanning 113 Pebble Brook Court...");
+    /**
+     * CAPABILITY: The Alpha Stream
+     * This is what your members pay for: Information they can't get elsewhere.
+     */
+    async scanDigitalHorizon() {
+        console.log("[ORACLE] Scanning Global Liquidity Vectors...");
+        // Simulation of high-value data
         return {
-            energy_efficiency: "98.2%",
-            compute_uptime: "99.99%",
-            security_status: "SECURE",
-            timestamp: Date.now()
+            market_sentiment: "BULLISH_DIVERGENCE",
+            whale_movement: "DETECTED_BINANCE_INFLOW",
+            signal_strength: "99.9%"
         };
     }
 }
