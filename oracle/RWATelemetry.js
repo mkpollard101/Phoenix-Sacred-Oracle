@@ -1,25 +1,24 @@
-// oracle/MarketTelemetry.js
-// SUBJECT: High-Frequency Data Stream for Members
-// PROTOCOL: FLOWER OF LIFE DATA SCHEMA
+// src/GhostNodeManager.js
+// CLASSIFICATION: MEMBERSHIP ACCESS ONLY
+// SUBJECT: PHOENIX MASTER KEY
 
-export class MarketTelemetry {
+import { randomBytes } from 'crypto';
+
+export class GhostNodeManager {
     constructor() {
-        this.geometry = "FLOWER_OF_LIFE";
-        // CHANGED: From Physical Sensors to Digital Feeds
-        this.feeds = ["BTC_VOLATILITY", "WHALE_WALLET_WATCH", "AI_SENTIMENT"];
+        this.systemStatus = "ONLINE";
+        this.product = "PHOENIX_OMEGA_MEMBERSHIP";
+        this.price = "$1,000/month";
     }
 
     /**
-     * CAPABILITY: The Alpha Stream
-     * This is what your members pay for: Information they can't get elsewhere.
+     * CAPABILITY: Generate Access Key
+     * Creates a unique login token for a paid member.
      */
-    async scanDigitalHorizon() {
-        console.log("[ORACLE] Scanning Global Liquidity Vectors...");
-        // Simulation of high-value data
-        return {
-            market_sentiment: "BULLISH_DIVERGENCE",
-            whale_movement: "DETECTED_BINANCE_INFLOW",
-            signal_strength: "99.9%"
-        };
+    generateMemberKey() {
+        // This is the product you sell. A digital key.
+        const key = "ACCESS-" + randomBytes(16).toString('hex');
+        console.log(`[OMEGA] New Member Key Generated: ${key}`);
+        return key;
     }
 }
