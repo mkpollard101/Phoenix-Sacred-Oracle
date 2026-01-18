@@ -3,7 +3,8 @@ import { ethers } from 'ethers';
 
 // --- CONFIGURATION ---
 const LOG_FILE = 'performance_log.json';
-const RPC_URL = "https://cloudflare-eth.com"; // Public Quantum Node (No API Key Required)
+const RPC_URL = "https://rpc.flashbots.net"; // Flashbots High-Availability Node
+
 
 const PHI = 1.618;
 
