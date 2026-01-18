@@ -1,0 +1,9 @@
+{
+  "name": "phoenix-sacred-oracle",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Sacred Geometry Market Signals",
+  "dependencies": {
+    "ethers": "^6.0.0"
+  }
+}
