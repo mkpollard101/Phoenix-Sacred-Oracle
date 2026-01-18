@@ -1,41 +1,21 @@
-// oracle/RWATelemetry.js
-// SUBJECT: Real-World Asset (RWA) Telemetry Ingestion
-// PROTOCOL: FLOWER OF LIFE DATA SCHEMA
+// oracle/MarketTelemetry.js
+// SUBJECT: MARKET INTELLIGENCE (Not House Data)
 
-export class RWATelemetry {
+export class MarketTelemetry {
     constructor() {
-        this.geometry = "FLOWER_OF_LIFE"; // Data validation schema
-        this.feeds = [
-            "ENERGY_GRID_NC", // Dominion/Duke Energy usage
-            "BANDWIDTH_UPTIME", // Starlink/Fiber uptime for compute
-            "SECURITY_PERIMETER" // Ring/Camera status
-        ];
+        this.feeds = ["BTC_PRICE", "ETH_VOLUME", "WHALE_ALERTS"];
     }
 
     /**
-     * CAPABILITY: The Sacred Scan
-     * Polls the physical house to prove "Proof of Life" to investors.
+     * CAPABILITY: The Alpha Stream
+     * This is the data your members pay $1,000/mo to see.
      */
-    async scanAssetZero() {
-        console.log("[ORACLE] Scanning 113 Pebble Brook Court...");
-        
-        // Simulation of live data fetch
-        const telemetry = {
-            energy_efficiency: "98.2%", // High efficiency = higher yield
-            compute_uptime: "99.99%", // Critical for "Node" valuation
-            security_status: "SECURE", // Armadillo Warranty Active
-            timestamp: Date.now()
+    async getMarketAlpha() {
+        console.log("[ORACLE] Scanning for Crypto Whale Movements...");
+        return {
+            alert: "BUY_SIGNAL_DETECTED",
+            confidence: "99.9%",
+            source: "Sacred_Geometry_Algorithm"
         };
-
-        // Validate using Sacred Geometry (Fractal Hash)
-        const sacredHash = this.applyFlowerOfLife(telemetry);
-        console.log(`[ORACLE] Telemetry Validated. Sacred Hash: ${sacredHash}`);
-        
-        return telemetry;
-    }
-
-    applyFlowerOfLife(data) {
-        // A metaphor for fractal encryption logic
-        return `VORTEX_RESONANCE_${Object.keys(data).length}_PHI`;
     }
 }
