@@ -3,7 +3,8 @@ import { ethers } from 'ethers';
 
 // --- CONFIGURATION ---
 const LOG_FILE = 'performance_log.json';
-const RPC_URL = "https://rpc.ankr.com/eth"; // Public Quantum Node
+const RPC_URL = "https://cloudflare-eth.com"; // Public Quantum Node (No API Key Required)
+
 const PHI = 1.618;
 
 // --- UNIVERSAL ADAPTER (Works on all Node versions) ---
