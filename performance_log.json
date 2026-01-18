@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1768695942800,
+    "timestamp": "2026-01-18T00:25:42.800Z",
+    "gas_price": 0.031078113,
+    "entropy_score": 1.2233,
+    "signal": "BUY_SIGNAL",
+    "sacred_ratio": 1.618,
+    "status": "OPPORTUNITY_DETECTED"
+  }
+]
