@@ -475,5 +475,14 @@
     "signal": "BUY_SIGNAL",
     "sacred_ratio": 1.618,
     "status": "OPPORTUNITY_DETECTED"
+  },
+  {
+    "id": 1768899818797,
+    "timestamp": "2026-01-20T09:03:38.797Z",
+    "gas_price": 0.09674101,
+    "entropy_score": 1.4414,
+    "signal": "BUY_SIGNAL",
+    "sacred_ratio": 1.618,
+    "status": "OPPORTUNITY_DETECTED"
   }
 ]
